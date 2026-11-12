@@ -20,11 +20,10 @@ def register_view(request):
     return Response({'user':UserSerializer(user).data,'tokens':tokens_for(user)},status=status.HTTP_201_CREATED)
 
 
-@api_view(['POST'])
 class loginView(TokenObtainPairView):
     serailizer = CustomTokenObtainedPairSerializer
     throttle_classes = [ScopedRateThrottle]
-    throttle_scopes =  'login'
+    throttle_scope =  'login'
 
 
 @api_view(['POST'])
@@ -40,3 +39,4 @@ def change_password_view(request):
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response({'detail':'Password chnaged . Please log in again'})
+

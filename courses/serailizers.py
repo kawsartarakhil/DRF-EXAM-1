@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Catergories
+from .models import Category
 
-class CatergorySerailizer(serializers.BaseSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Catergories
-        fields = ["name","description"]
+        model = Category
+        fields = "__all__"

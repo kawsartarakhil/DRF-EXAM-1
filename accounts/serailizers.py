@@ -6,7 +6,8 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken,OutstandingToken
 from rest_framework_simplejwt.tokens import RefreshToken
 
-class RegisterSerailizer(serializers.BaseSerializer):
+class RegisterSerailizer(serializers.Serializer):
+    username = serializers.CharField()
     email = serializers.EmailField(required = True)
     password = serializers.CharField()
     password2 = serializers.CharField()

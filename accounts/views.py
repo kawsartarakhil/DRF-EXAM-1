@@ -17,7 +17,7 @@ def register_view(request):
     serializer = RegisterSerailizer(data=request.data)
     serializer.is_valid(raise_exception=True)
     user = serializer.save()
-    return Response({'user':UserSerializer.data,'tokens':tokens_for(user)},status=status.HTTP_201_CREATED)
+    return Response({'user':UserSerializer(user).data,'tokens':tokens_for(user)},status=status.HTTP_201_CREATED)
 
 
 @api_view(['POST'])
